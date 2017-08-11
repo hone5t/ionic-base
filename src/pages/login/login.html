@@ -5,14 +5,35 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color='primary'>
     <ion-title>Login</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+  <form [formGroup]='loginForm' (submit)='loginUser()' novalidate>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input formControlName='email' type='email' [class.invalid]='!loginForm.controls.email.valid && loginForm.controls.email.dirty'>
+      </ion-input>
+    </ion-item>
+    <ion-item class='error-message' *ngIf='!loginForm.controls.email.valid && loginForm.controls.email.dirty'>
+      <p>Change that depend on Email Validation rules</p>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input formControlName='password' type='password' [class.invalid]='!loginForm.controls.password.valid && loginForm.controls.password.dirty'></ion-input>
+    </ion-item>
+    <ion-item class='error-message' *ngIf='!loginForm.controls.password.valid && loginForm.controls.password.dirty'>
+      <p>Change that depend on password Validation rules</p>
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="!loginForm.valid">
+      Login
+    </button>
+  </form>
+  <button ion-button block clear (click)="goToSignup()">
+    Create a new account
+  </button>
+  <button ion-button block clear (click)="goToResetPassword()">
+    I forgot my password
+  </button>
 </ion-content>
