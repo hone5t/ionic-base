@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
+import { EmailValidator } from '../../validators/email';
 
 /**
  * Generated class for the LoginPage page.
@@ -29,7 +30,7 @@ export class LoginPage {
               public authProivder: AuthProvider
   ) {
     this.loginForm = formBuilder.group({
-      email:['',Validators.compose([Validators.required])],
+      email:['',Validators.compose([Validators.required,EmailValidator.isValid])],
       password:['',Validators.compose([Validators.required])]
     })
   }
