@@ -4,4 +4,10 @@ Ionic Firebase Authentication
 ```bash  
 $npm install promise-polyfill --save-exact  
 ```  
+[stackoverflow](https://stackoverflow.com/questions/42350505/error-cannot-read-property-replace-of-undefined-when-building-ios-cordova) fix error cannot read property 'replace' of undefined when runing ionic cordova emulate ios  
+```bash  
+cd platforms/ios/cordova/node_modules/  
+sudo npm install ios-sim@latest  
+```  
+
 
