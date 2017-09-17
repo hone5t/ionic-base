@@ -1,6 +1,6 @@
 Ionic Firebase Authentication  
 ## Issues  
-[stackoverflow](https://stackoverflow.com/questions/43428415/error-in-firebase-app-shared-promise-js) to fix error when trying to run ionic cordova emulate  
+[stackoverflow](https://stackoverflow.com/questions/43428415/  error-in-firebase-app-shared-promise-js) to fix error when trying to run ionic cordova emulate  
 ```bash  
 $npm install promise-polyfill --save-exact  
 ```  
@@ -8,6 +8,14 @@ $npm install promise-polyfill --save-exact
 ```bash  
 cd platforms/ios/cordova/node_modules/  
 sudo npm install ios-sim@latest  
+```
+if you have the same error when emulate android then  
+on file /platforms/android/cordova/lib/emulator.js line 202: replace  
+
+```javascript  
+var num = target.split('(API level ')[1].replace(')', '');  
 ```  
-
-
+to  
+```javascript  
+var num = target.match(/\d+/)[0];  
+```  
